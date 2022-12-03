@@ -22,7 +22,7 @@ function Home() {
 
   async function hiddenData() {
     const { data } = await api.get();
-
+    console.log(data.response);
     setDataCountry(data.response[0]);
     setCases(data.response[0].cases);
     setDeaths(data.response[0].deaths);
@@ -71,6 +71,7 @@ function Home() {
           </div>
           <div className="search">
             <input
+              className="searchInput"
               type="text"
               name="search"
               id="searchId "
@@ -114,6 +115,31 @@ function Home() {
           </div>
         </div>
         <div className="div-hidden">
+          <div className="container-search-small">
+            <input
+              className="search-small"
+              type="text"
+              name="search"
+              id="searchId "
+              placeholder="New Country..."
+              value={country}
+              onChange={(e) => {
+                setCountry(e.target.value);
+              }}
+            ></input>
+
+            <div className="container-search-icon">
+              <button
+                id="btn-div"
+                className="search-icon"
+                onClick={() => {
+                  hiddenData();
+                }}
+              >
+                <FcSearch className="icon" size={35} />
+              </button>
+            </div>
+          </div>
           <div className="container-data">
             <ul>
               <li>
@@ -146,10 +172,11 @@ function Home() {
             </ul>
           </div>
           <div className="btn-container">
-            <button className="btn-style">
-              {" "}
-              ABOUT COUNTRY... <FcViewDetails size={28} />{" "}
-            </button>
+            <a href={`https://en.wikipedia.org/wiki/${country}`} target={"_blank"} rel={"noreferrer"}>
+              <button className="btn-style">
+                ABOUT COUNTRY... <FcViewDetails size={28} />{" "}
+              </button>
+            </a>
           </div>
         </div>
       </main>
@@ -158,19 +185,31 @@ function Home() {
         <div className="social-icons">
           <ul>
             <li>
-              <a href="https://github.com/PFelipe15" target={"_blank"} rel="noreferrer">
+              <a
+                href="https://github.com/PFelipe15"
+                target={"_blank"}
+                rel="noreferrer"
+              >
                 <BsGithub size={35} />
               </a>
             </li>
 
             <li>
-              <a href="https://www.instagram.com/paullofelipe_/" target={"_blank"} rel="noreferrer">
+              <a
+                href="https://www.instagram.com/paullofelipe_/"
+                target={"_blank"}
+                rel="noreferrer"
+              >
                 <BsInstagram size={35} />{" "}
               </a>
             </li>
 
             <li>
-              <a href="https://www.linkedin.com/in/paulo-felipe-torres-ara%C3%BAjo-45337723b/" target={"_blank"} rel="noreferrer">
+              <a
+                href="https://www.linkedin.com/in/paulo-felipe-torres-ara%C3%BAjo-45337723b/"
+                target={"_blank"}
+                rel="noreferrer"
+              >
                 <BsLinkedin size={35} />
               </a>
             </li>
