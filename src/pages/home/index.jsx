@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { FcSearch } from "react-icons/fc";
+import React, { useState } from "react";
+import { FcSearch, FcViewDetails } from "react-icons/fc";
+import { BsGithub, BsInstagram, BsLinkedin } from "react-icons/bs";
 import "./home.css";
 import axios from "axios";
+
 function Home() {
   const [country, setCountry] = useState("");
   const [dataCountry, setDataCountry] = useState([""]);
@@ -11,11 +13,11 @@ function Home() {
   const api = axios.create({
     params: { country: country },
     headers: {
-      "X-RapidAPI-Key": "e5aa03d61fmsh38cb01b57e398c7p1b3d18jsn5e8e160f4d18",
-      "X-RapidAPI-Host": "covid-193.p.rapidapi.com",
+      "X-RapidAPI-Key": process.env.REACT_APP_KEYAPI,
+      "X-RapidAPI-Host": process.env.REACT_APP_HOSTAPI,
     },
 
-    baseURL: " https://covid-193.p.rapidapi.com/statistics",
+    baseURL: process.env.REACT_APP_BASEURL,
   }); // api criação //
 
   async function hiddenData() {
@@ -26,11 +28,13 @@ function Home() {
     setDeaths(data.response[0].deaths);
 
     var divHidden = document.querySelector(".div-hidden");
+    var divinfosMenu = document.querySelector(".home-infos");
     var countryInformation = document.querySelector(".hidden-information");
     var searchmenu = document.querySelector(".search-menu");
     divHidden.style.display = "flex";
     countryInformation.style.display = "flex";
     searchmenu.style.display = "none";
+    divinfosMenu.style.display = "none";
   }
 
   return (
@@ -90,11 +94,27 @@ function Home() {
       </div>
 
       <main>
+        <div className="home-infos">
+          <div className="infos">
+            <h1 className="title">
+              O que é o CORONA
+              <br /> VIRUS?
+            </h1>
+            <p className="par-infos">
+              Coronavírus (COVID-19) é uma doença infecciosa causada pelo vírus<br/> 
+              SARS-CoV-2.  
+              A maioria das pessoas que adoece em decorrência da<br/> 
+              COVID-19 apresenta sintomas leves a moderados e se recupera sem<br/> 
+              tratamento especial. No entanto, algumas desenvolvem um quadro 
+              grave e precisam de atendimento médico.<br/> 
+            </p>
+          </div>
+        </div>
         <div className="div-hidden">
           <div className="container-data">
             <ul>
               <li>
-                NEW CASES: <span className="red">{cases.new}</span>
+                NEW CASES: <span className="red">{cases.new || " Not found "}</span>
               </li>
               <li>
                 CASES ACTIVES:: <span className="red">{cases.active}</span>
@@ -121,8 +141,22 @@ function Home() {
               </li>
             </ul>
           </div>
+          <div className="btn-container">
+            <button className="btn-style">
+              {" "}
+              ABOUT COUNTRY... <FcViewDetails size={28} />{" "}
+            </button>
+          </div>
         </div>
       </main>
+      <footer>
+        <h1>DEVELOPER FOR PAULO FELIPE</h1>
+        <div className="social-icons">
+          <BsGithub size={35} />
+          <BsInstagram size={35} />
+          <BsLinkedin size={35} />
+        </div>
+      </footer>
     </div>
   );
 }
