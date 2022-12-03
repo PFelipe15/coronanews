@@ -101,12 +101,15 @@ function Home() {
               <br /> VIRUS?
             </h1>
             <p className="par-infos">
-              Coronavírus (COVID-19) é uma doença infecciosa causada pelo vírus<br/> 
-              SARS-CoV-2.  
-              A maioria das pessoas que adoece em decorrência da<br/> 
-              COVID-19 apresenta sintomas leves a moderados e se recupera sem<br/> 
-              tratamento especial. No entanto, algumas desenvolvem um quadro 
-              grave e precisam de atendimento médico.<br/> 
+              Coronavírus (COVID-19) é uma doença infecciosa causada pelo vírus
+              <br />
+              SARS-CoV-2. A maioria das pessoas que adoece em decorrência da
+              <br />
+              COVID-19 apresenta sintomas leves a moderados e se recupera sem
+              <br />
+              tratamento especial. No entanto, algumas desenvolvem um quadro
+              grave e precisam de atendimento médico.
+              <br />
             </p>
           </div>
         </div>
@@ -114,7 +117,8 @@ function Home() {
           <div className="container-data">
             <ul>
               <li>
-                NEW CASES: <span className="red">{cases.new || " Not found "}</span>
+                NEW CASES:{" "}
+                <span className="red">{cases.new || " Not found "}</span>
               </li>
               <li>
                 CASES ACTIVES:: <span className="red">{cases.active}</span>
@@ -152,9 +156,25 @@ function Home() {
       <footer>
         <h1>DEVELOPER FOR PAULO FELIPE</h1>
         <div className="social-icons">
-          <BsGithub size={35} />
-          <BsInstagram size={35} />
-          <BsLinkedin size={35} />
+          <ul>
+            <li>
+              <a href="https://github.com/PFelipe15" target={"_blank"} rel="noreferrer">
+                <BsGithub size={35} />
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.instagram.com/paullofelipe_/" target={"_blank"} rel="noreferrer">
+                <BsInstagram size={35} />{" "}
+              </a>
+            </li>
+
+            <li>
+              <a href="https://www.linkedin.com/in/paulo-felipe-torres-ara%C3%BAjo-45337723b/" target={"_blank"} rel="noreferrer">
+                <BsLinkedin size={35} />
+              </a>
+            </li>
+          </ul>
         </div>
       </footer>
     </div>
