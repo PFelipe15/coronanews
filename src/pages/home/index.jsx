@@ -22,7 +22,7 @@ function Home() {
 
   async function hiddenData() {
     const { data } = await api.get();
-    console.log(data.response);
+
     setDataCountry(data.response[0]);
     setCases(data.response[0].cases);
     setDeaths(data.response[0].deaths);
@@ -172,7 +172,11 @@ function Home() {
             </ul>
           </div>
           <div className="btn-container">
-            <a href={`https://en.wikipedia.org/wiki/${country}`} target={"_blank"} rel={"noreferrer"}>
+            <a
+              href={`https://en.wikipedia.org/wiki/${country}`}
+              target={"_blank"}
+              rel={"noreferrer"}
+            >
               <button className="btn-style">
                 ABOUT COUNTRY... <FcViewDetails size={28} />{" "}
               </button>
